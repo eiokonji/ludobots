@@ -47,9 +47,12 @@ class ROBOT:
                 self.motors[jointName].Set_Value(self.robotId, desiredAngle * c.motorJointRange)
 
     def Get_Fitness(self, id):
-        # params: 0/x, 1/y, 2/z
-        fitness = p.getBasePositionAndOrientation(self.robotId)[0][0] * -1
+        fitness = self.__directionFitness(0) * -1
         f = open(f"tmp{id}.txt", "w")
         f.write(str(fitness))
         f.close()
         os.rename(f"tmp{id}.txt", f"fitness{id}.txt")
+
+    def __directionFitness(self, param):
+        # params: 0/x, 1/y, 2/z
+        return p.getBasePositionAndOrientation(self.robotId)[0][param]

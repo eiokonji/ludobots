@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import os
 
 # get all the files containing data
-files = os.listdir("data")
+files = os.listdir("FitnessData")
 if len(files) == 0:
     print("NO DATA TO ANALYZE")
     exit()
@@ -14,10 +14,10 @@ for file in files:
     
     # get the metadata for the legend
     splitName = file.split("_")
-    legend = f"Seed {splitName[2][1]}"
+    legend = f"Seed {splitName[2][0]}"
     
     # read the data in
-    with open(f"data/{file}") as f:
+    with open(f"FitnessData/{file}") as f:
         data = []
         for line in f:
             num = line.split("\n")[0]
@@ -32,5 +32,5 @@ plt.title("Evolution")
 plt.legend()
 
 # save the figure
-figNumber = len(os.listdir("plot")) + 1
-plt.savefig(f"plot/Curve{figNumber}.png")
+figNumber = len(os.listdir("FitnessCurves")) + 1
+plt.savefig(f"FitnessCurves/Curve{figNumber}.png")

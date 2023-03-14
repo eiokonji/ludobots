@@ -14,5 +14,7 @@ if len(sys.argv) != 4:
 # run evolution strategy
 phc = PARALLEL_HILL_CLIMBER()
 print(f"\nSeed: {c.seed}")
+print(f"Number of Gens: {c.numberOfGenerations}")
+print(f"Population per Gen: {c.populationSize}")
 phc.Evolve()
 phc.Show_Best()
