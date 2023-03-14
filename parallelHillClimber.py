@@ -59,6 +59,7 @@ class PARALLEL_HILL_CLIMBER:
         for child in self.children:
             self.children[child].Mutate()
 
+    # selection is no longer PHC; more tournament style
     def Select(self):
         # (1) all parents, children go into 1 big population
         self.everyone = []
